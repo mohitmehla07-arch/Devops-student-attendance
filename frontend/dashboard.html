@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AttendEase | Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <div class="brand-icon">A</div>
+                <span>AttendEase</span>
+            </div>
+
+            <p class="menu-heading">MAIN MENU</p>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html" class="nav-link active">
+                   Dashboard
+                </a>
+
+                <a href="students.html" class="nav-link">
+                     Students
+                </a>
+
+                <a href="attendance.html" class="nav-link">
+                   Attendance
+                </a>
+
+                <a href="index.html" class="nav-link">
+                    Logout
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <strong>AttendEase</strong>
+                <p>Student Management System</p>
+            </div>
+
+        </aside>
+
+
+
+        <main class="main-content">
+
+
+            <header class="topbar">
+
+                <div>
+                    <h2>Dashboard</h2>
+                    <p>Overview of student attendance and activities.</p>
+                </div>
+
+                <div class="admin-profile">
+
+                    <div class="profile-avatar">A</div>
+
+                    <div>
+                        <strong id="adminName">Administrator</strong>
+                        <span>Admin Account</span>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <section class="dashboard-welcome">
+
+                <div>
+                    <h1>Welcome to AttendEase</h1>
+
+                    <p>
+                        Manage students and monitor attendance
+                        from one place.
+                    </p>
+                </div>
+
+
+            </section>
+
+
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                   
+
+                    <p>Total Students</p>
+
+                    <h2 id="totalStudents">Loading...</h2>
+
+                    <span>Registered students</span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                   
+
+                    <p>Present Today</p>
+
+                    <h2 id="presentToday">Loading...</h2>
+
+                    <span>Students present today</span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                
+
+                    <p>Absent Today</p>
+
+                    <h2 id="absentToday">Loading...</h2>
+
+                    <span>Students absent today</span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+
+                    <p>Attendance Rate</p>
+
+                    <h2 id="attendanceRate">Loading...</h2>
+
+                    <span>Today's attendance rate</span>
+
+                </div>
+
+            </section>
+
+            <section class="dashboard-grid">
+
+                <div class="content-card attendance-overview">
+
+                    <div class="card-heading">
+
+                        <div>
+                            <h3>Attendance Overview</h3>
+                            <p>Today's attendance summary</p>
+                        </div>
+
+                        <span class="today-badge">Today</span>
+
+                    </div>
+
+
+                    <div class="attendance-progress">
+
+                        <div class="progress-circle">
+
+                            <div>
+                                <strong id="overviewRate">0%</strong>
+                                <span>Present</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-details">
+
+                            <div>
+
+                                <span class="legend-dot present-dot"></span>
+
+                                Present
+
+                                <strong id="overviewPresent">0</strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span class="legend-dot absent-dot"></span>
+
+                                Absent
+
+                                <strong id="overviewAbsent">0</strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="content-card quick-actions">
+
+                    <div class="card-heading">
+
+                        <div>
+                            <h3>Quick Actions</h3>
+                            <p>Manage your daily activities</p>
+                        </div>
+
+                    </div>
+
+
+                    <a href="students.html" class="action-link">
+
+                        <div>
+                            <strong>Add Student</strong>
+                            <p>Register a new student</p>
+                        </div>
+
+                        <b>›</b>
+
+                    </a>
+
+
+                    <a href="attendance.html" class="action-link">
+
+
+                        <div>
+                            <strong>Mark Attendance</strong>
+                            <p>Record student attendance</p>
+                        </div>
+
+                        <b>›</b>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+            <section class="content-card recent-records">
+
+                <div class="card-heading">
+
+                    <div>
+                        <h3>Recent Attendance Records</h3>
+
+                        <p>
+                            Latest student attendance information
+                        </p>
+                    </div>
+
+                    <a href="attendance.html" class="view-all">
+                        View All
+                    </a>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Admission Number</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="recentAttendance">
+
+                            <tr>
+                                <td colspan="4">
+                                    Loading attendance records...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <footer class="dashboard-footer">
+
+                © 2026 AttendEase. All rights reserved.
+
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

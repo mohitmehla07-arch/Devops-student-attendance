@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AttendEase | Attendance</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <div class="brand-icon">A</div>
+                <span>AttendEase</span>
+            </div>
+
+            <p class="menu-heading">MAIN MENU</p>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html" class="nav-link">
+                     Dashboard
+                </a>
+
+                <a href="students.html" class="nav-link">
+                     Students
+                </a>
+
+                <a href="attendance.html" class="nav-link active">
+                  Attendance
+                </a>
+
+                <a href="index.html" class="nav-link">
+                    Logout
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <strong>AttendEase</strong>
+                <p>Student Management System</p>
+            </div>
+
+        </aside>
+
+
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div>
+                    <h2>Attendance Management</h2>
+                    <p>Record and manage student attendance.</p>
+                </div>
+
+                <div class="admin-profile">
+
+                    <div class="profile-avatar">A</div>
+
+                    <div>
+                        <strong id="adminName">Administrator</strong>
+                        <span>Admin Account</span>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <section class="page-intro">
+
+                <div>
+                    <h1>Attendance</h1>
+
+                    <p>
+                        Mark, update and review student attendance records.
+                    </p>
+                </div>
+
+            </section>
+
+            <section class="stats-grid attendance-stats">
+
+                <div class="stat-card">
+
+                    
+
+                    <p>Total Students</p>
+
+                    <h2 id="attendanceTotalStudents">0</h2>
+
+                    <span>Registered students</span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+
+                    <p>Present</p>
+
+                    <h2 id="attendancePresent">0</h2>
+
+                    <span>Present students</span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    
+
+                    <p>Absent</p>
+
+                    <h2 id="attendanceAbsent">0</h2>
+
+                    <span>Absent students</span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+               
+
+                    <p>Attendance Rate</p>
+
+                    <h2 id="attendancePercentage">0%</h2>
+
+                    <span>Selected date</span>
+
+                </div>
+
+            </section>
+
+
+            <section class="content-card mark-attendance-section">
+
+                <div class="card-heading">
+
+                    <div>
+                        <h3>Mark Student Attendance</h3>
+
+                        <p>
+                            Select a date and update attendance status.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="attendance-toolbar">
+
+                    <div class="form-group">
+
+                        <label for="attendanceDate">
+                            Attendance Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="attendanceDate"
+                            required
+                        >
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="loadAttendance">
+
+                        Load Students
+
+                    </button>
+
+                </div>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Admission Number</th>
+                                <th>Student Name</th>
+                                <th>Course</th>
+                                <th>Semester</th>
+                                <th>Attendance Status</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="markAttendanceTable">
+
+                            <tr>
+                                <td colspan="5">
+                                    Select a date and load students.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="attendance-actions">
+
+                    <span id="attendanceMessage" role="status"></span>
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="saveAttendance">
+
+                        Save Attendance
+
+                    </button>
+
+                </div>
+
+            </section>
+
+            <section class="content-card attendance-records">
+
+                <div class="card-heading">
+
+                    <div>
+                        <h3>Attendance Records</h3>
+
+                        <p>
+                            View attendance information by date.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="student-toolbar">
+
+                    <div class="form-group">
+
+                        <label for="recordDate">
+                            Filter by Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="recordDate"
+                        >
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="viewAllAttendance">
+
+                        View All Records
+
+                    </button>
+
+                </div>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Admission Number</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="attendanceRecordsTable">
+
+                            <tr>
+                                <td colspan="5">
+                                    Attendance records will appear here.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <footer class="dashboard-footer">
+
+                © 2026 AttendEase. All rights reserved.
+
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

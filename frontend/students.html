@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AttendEase | Students</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <div class="brand-icon">A</div>
+                <span>AttendEase</span>
+            </div>
+
+            <p class="menu-heading">MAIN MENU</p>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html" class="nav-link">
+                    Dashboard
+                </a>
+
+                <a href="students.html" class="nav-link active">
+                     Students
+                </a>
+
+                <a href="attendance.html" class="nav-link">
+                    Attendance
+                </a>
+
+                <a href="index.html" class="nav-link">
+                     Logout
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <strong>AttendEase</strong>
+                <p>Student Management System</p>
+            </div>
+
+        </aside>
+
+
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div>
+                    <h2>Student Management</h2>
+                    <p>Manage and maintain student information.</p>
+                </div>
+
+                <div class="admin-profile">
+
+                    <div class="profile-avatar">A</div>
+
+                    <div>
+                        <strong id="adminName">Administrator</strong>
+                        <span>Admin Account</span>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <section class="page-intro">
+
+                <div>
+                    <h1>Students</h1>
+
+                    <p>
+                        Register, search and manage student records
+                        in one place.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="openStudentForm">
+
+                     Add New Student
+
+                </button>
+
+            </section>
+
+
+            <section class="student-summary">
+
+                <div class="content-card summary-card">
+
+                    <div class="stat-icon blue">♙</div>
+
+                    <div>
+                        <p>Total Students</p>
+                        <h2 id="studentCount">Loading...</h2>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section
+                class="content-card student-form-section"
+                id="studentFormSection"
+                hidden>
+
+                <div class="card-heading">
+
+                    <div>
+                        <h3 id="studentFormTitle">Add New Student</h3>
+
+                        <p>
+                            Enter the student's details below.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="close-button"
+                        id="closeStudentForm"
+                        aria-label="Close form">
+
+                        ×
+
+                    </button>
+
+                </div>
+
+
+                <form id="studentForm">
+
+                    <input
+                        type="hidden"
+                        id="studentId"
+                    >
+
+                    <div class="student-form-grid">
+
+                        <div class="form-group">
+                            <label for="admissionNumber">
+                                Admission Number
+                            </label>
+
+                            <input
+                                type="text"
+                                id="admissionNumber"
+                                placeholder="Enter admission number"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="fullName">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                placeholder="Enter full name"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="studentEmail">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="studentEmail"
+                                placeholder="Enter email address"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="course">
+                                Course
+                            </label>
+
+                            <input
+                                type="text"
+                                id="course"
+                                placeholder="Enter course name"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="semester">
+                                Semester
+                            </label>
+
+                            <select id="semester" required>
+
+                                <option value="">
+                                    Select semester
+                                </option>
+
+                                <option value="1">Semester 1</option>
+                                <option value="2">Semester 2</option>
+                                <option value="3">Semester 3</option>
+                                <option value="4">Semester 4</option>
+                                <option value="5">Semester 5</option>
+                                <option value="6">Semester 6</option>
+                                <option value="7">Semester 7</option>
+                                <option value="8">Semester 8</option>
+
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="phone">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                placeholder="Enter phone number"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            id="cancelStudentForm">
+
+                            Cancel
+
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="primary-button"
+                            id="saveStudentButton">
+
+                            Save Student
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+            <section class="content-card student-records">
+
+                <div class="card-heading">
+
+                    <div>
+                        <h3>Student Records</h3>
+
+                        <p>
+                            View and manage registered students.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="student-toolbar">
+
+                    <div class="search-box">
+
+                        <span>⌕</span>
+
+                        <input
+                            type="search"
+                            id="studentSearch"
+                            placeholder="Search by name or admission number..."
+                        >
+
+                    </div>
+
+                </div>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Admission Number</th>
+                                <th>Student Name</th>
+                                <th>Email</th>
+                                <th>Course</th>
+                                <th>Semester</th>
+                                <th>Phone</th>
+                                <th>Actions</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="studentTableBody">
+
+                            <tr>
+                                <td colspan="7">
+                                    Loading student records...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="table-footer">
+
+                    <span id="studentTableInfo">
+                        Loading records...
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <footer class="dashboard-footer">
+
+                © 2026 AttendEase. All rights reserved.
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
