@@ -1,0 +1,102 @@
+
+from datetime import date
+from fastapi.testclient import TestClient
+from backend.attendance_service import app
+
+client = TestClient(app)
+
+def test_attendance_service_home():
+    response = client.get("/")
+    assert response.status_code == 200
+
+def test_mark_attendance():
+    students_response = client.get("http://127.0.0.1:8002/students")
+    students = students_response.json()
+
+    student = next(
+        (s for s in students if s["admission_number"] == "UK001"),
+        None
+    )
+    assert student is not None
+
+    users_response = client.post(
+        "http://127.0.0.1:8001/login",
+        json={
+            "email": "admin@example.com",
+            "password": "Admin@12345"
+        }
+    )
+    assert users_response.status_code == 200
+    user = users_response.json()
+
+    response = client.post(
+        "/attendance",
+        json={
+            "student_id": student["student_id"],
+            "marked_by": user["user_id"],
+            "attendance_date": "2026-11-23",
+            "status": "Present"
+        }
+    )
+
+    assert response.status_code == 200
+    assert response.json()["message"] == "Attendance marked successfully"
+
+def test_get_attendance():
+    response = client.get("/attendance")
+
+    assert response.status_code == 200
+    assert isinstance(response.json(), list)
+
+def test_attendance_summary():
+    response = client.get("/attendance/summary")
+
+    assert response.status_code == 200
+    assert "total_records" in response.json()
+    assert "present" in response.json()
+    assert "absent" in response.json()
+
+def test_dashboard():
+    response = client.get("/dashboard")
+
+    assert response.status_code == 200
+    data = response.json()
+
+    assert "total_students" in data
+    assert "present_today" in data
+    assert "absent_today" in data
+    assert "attendance_rate" in data
+    assert "recent_records" in data
+
+def test_update_attendance():
+    response = client.get(
+        "/attendance?attendance_date=2026-11-23"
+    )
+
+    records = response.json()
+    record = next(
+        (r for r in records if r["student_id"] is not None),
+        None
+    )
+
+    assert record is not None
+
+    update_response = client.put(
+        f"/attendance/{record['attendance_id']}",
+        json={"status": "Absent"}
+    )
+
+    assert update_response.status_code == 200
+
+def test_invalid_attendance_status():
+    response = client.post(
+        "/attendance",
+        json={
+            "student_id": 1,
+            "marked_by": 1,
+            "attendance_date": str(date.today()),
+            "status": "Late"
+        }
+    )
+
+    assert response.status_code == 422
