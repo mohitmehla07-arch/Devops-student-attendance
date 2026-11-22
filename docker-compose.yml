@@ -1,0 +1,51 @@
+
+services:
+
+  user-service:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile.user
+    container_name: attendease-user
+    env_file:
+      - .env
+    environment:
+      DB_HOST: host.docker.internal
+    ports:
+      - "8001:8001"
+    restart: unless-stopped
+
+  student-service:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile.student
+    container_name: attendease-student
+    env_file:
+      - .env
+    environment:
+      DB_HOST: host.docker.internal
+    ports:
+      - "8002:8002"
+    restart: unless-stopped
+
+  attendance-service:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile.attendance
+    container_name: attendease-attendance
+    env_file:
+      - .env
+    environment:
+      DB_HOST: host.docker.internal
+    ports:
+      - "8003:8003"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: attendease-frontend
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+
